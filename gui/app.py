@@ -30,12 +30,12 @@ class Application:
         
         # summarize
         submitted_text = self.body.get("1.0", END)
-        text = self.news.summarize(submitted_text)
+        text = self.news.summarize(submitted_text.strip())
         self.body.delete("1.0", END)
         self.body.insert(INSERT, text)
         
         # categorize
-        categories = self.news.classify(text)
+        categories = self.news.classify(text.strip())
         suggested = Label(self.root,font=("bold",10),text="Suggested Categories:")
         suggested.place(x=450,y=500)
 
