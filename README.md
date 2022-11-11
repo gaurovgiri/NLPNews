@@ -21,4 +21,4 @@ $`python run.py gui` for gui
 - Open `127.0.0.1:8000/docs` in browser to check for the api documentation.
 
 ### GUI:
-    - $`python3 -m gui`
+- $`python3 -m gui`
