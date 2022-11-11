@@ -13,8 +13,8 @@ NLP News is a tool for summarizing and categorizing a news. It uses NLPcloud and
 
 
 ## How to run:
-$`python run.py api` for api
-$`python run.py gui` for gui
+$`python run.py api` for api  
+$`python run.py gui` for gui  
 
 ### API:
 - $`uvicorn api.main:app --reload`
