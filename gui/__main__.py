@@ -1,4 +1,4 @@
-from app import Application
+from gui.app import Application
 from tkinter import *
 from dotenv import dotenv_values
 

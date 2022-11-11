@@ -2,8 +2,8 @@
 from dotenv import dotenv_values
 from fastapi import FastAPI
 
-from model import newsRequest, newsResponse
-from ao_news import AO_NEWS
+from api.model import newsRequest, newsResponse
+from news.ao_news import AO_NEWS
 
 config = dotenv_values(".env")
 news = AO_NEWS(config["API-TOKEN"])

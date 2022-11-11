@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 
-from ao_news import AO_NEWS
+from news.ao_news import AO_NEWS
 
 class Application:
       def __init__(self, root, token):
@@ -19,6 +19,7 @@ class Application:
         self.body = Text(self.root)
         self.body.place(x=100, y=30, height=400, width=1000)
 
+        # submit button
         submit = Button(self.root, text="Submit",
                         bd='5', command=self.summarize)
 
@@ -29,9 +30,11 @@ class Application:
         text = self.news.summarize(submitted_text)
         self.body.delete("1.0", END)
         self.body.insert(INSERT, text)
+        
+        #copy button:
 
         copy = Button(self.root, text="Copy", bd=5, command=lambda: self.copyToClip(self.body.get("1.0",END)))
-        copy.place(x=600,y=450)
+        copy.place(x=700,y=450)
 
       def copyToClip(self,text):
         self.root.clipboard_clear()
