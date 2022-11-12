@@ -3,9 +3,9 @@ Import NLPCloud
 """
 import nlpcloud
 
-class AO_NEWS:
+class News:
 
-    _categories = ["Entrepreneurs", "Astrology", "Physics","Software","Programming","Lifestyle","Entertainment","Politics"]
+    _categories = ["Entrepreneurs","Education","Fashion","Health","Entertainment","Music","Event","Festivals","International","National & International","News","Politics","Programming","Sports","E-Sports","Astrology","Physics","Software","Tech Career","Travel","Vacancy","Scandal"]
     
     
     _models = {"summarize": "bart-large-cnn",

@@ -3,10 +3,10 @@ from dotenv import dotenv_values
 from fastapi import FastAPI
 
 from api.model import newsRequest, newsResponse
-from news.ao_news import AO_NEWS
+from news.news import News
 
 config = dotenv_values(".env")
-news = AO_NEWS(config["API-TOKEN"])
+news = News(config["API-TOKEN"])
 
 app = FastAPI()
 
@@ -14,7 +14,7 @@ app = FastAPI()
 @app.get("/")
 def root():
     """Returns Online Status"""
-    return {"Anmup": "Online"}
+    return {"I am": "Online"}
 
 
 @app.post("/news/", response_model=newsResponse)

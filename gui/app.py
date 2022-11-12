@@ -1,13 +1,13 @@
 from tkinter import *
 from tkinter import ttk
 
-from news.ao_news import AO_NEWS
+from news.news import News
 
 class Application:
       def __init__(self, root, token):
-        self.news = AO_NEWS(token)
+        self.news = News(token)
         self.root = root
-        self.root.title("Anmup Online")
+        self.root.title("News NLP")
         self.root.geometry("1200x800+0+0")
         self.root.resizable(False, False)
   
