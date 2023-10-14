@@ -1,34 +1,63 @@
-"""
-Import NLPCloud
-"""
 import nlpcloud
 
+
 class News:
+    """
+    A class for summarizing and classifying news articles using NLP models.
+    """
 
-    _categories = ["Entrepreneurs","Education","Fashion","Health","Entertainment","Music","Event","Festivals","International","National & International","News","Politics","Programming","Sports","E-Sports","Astrology","Physics","Software","Tech Career","Travel","Vacancy","Scandal"]
-    
-    
-    _models = {"summarize": "bart-large-cnn",
+    _categories = [
+        "Health",
+        "Technology",
+        "News",
+        "Entertainment",
+        "Sports",
+        "Education",
+        "Fashion",
+        "Politics",
+        "Travel",
+        "Science"
+    ]
 
-              "classify": "bart-large-mnli-yahoo-answers"}
+    _models = {
+        "summarize": "bart-large-cnn",
+        "classify": "bart-large-mnli-yahoo-answers",
+        "headline": "t5-base-en-generate-headline"
+    }
 
     def __init__(self, token):
         self.token = token
 
-    # Summarizes the given text
     def summarize(self, text):
-            client = nlpcloud.Client(self._models["summarize"], self.token)
-            res = client.summarization(text, size="large")
-            return res["summary_text"]
-   
+        """
+        Summarizes the given text using the BART-Large-CNN model.
 
-    # Classify through the given categories
+        Args:
+            text (str): The text to be summarized.
+
+        Returns:
+            str: The summarized text.
+        """
+        client = nlpcloud.Client(self._models["summarize"], self.token)
+        res = client.summarization(text, size="large")
+        return res["summary_text"]
+
+    def headline(self, text):
+        client = nlpcloud.Client(self._models["headline"], self.token)
+        res = client.summarization(text)
+        return res["summary_text"]
+
     def classify(self, text):
-            client = nlpcloud.Client(self._models["classify"], self.token)
-            res = client.classification(text,self._categories,True)
-            output = {}
-            for label,score in zip(res["labels"],res["scores"]):
-                output[label] = score
-            return output
+        """
+        Classifies the given text into one of the pre-defined categories.
 
+        Args:
+            text (str): The text to be classified.
 
+        Returns:
+            dict: A dictionary containing the classification labels and their corresponding scores.
+        """
+        client = nlpcloud.Client(self._models["classify"], self.token)
+        res = client.classification(text, self._categories, True)
+        output = dict(zip(res["labels"], res["scores"]))
+        return output
